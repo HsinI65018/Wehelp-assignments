@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+}
+
+nav{
+    display: flex;
+    font-size: 20px;
+    margin: 10px;
+}
+
+nav .logo{
+    flex: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-weight: bolder;
+    /*background-color: red;*/
+}
+
+nav div{
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+    /*background-color: royalblue;*/
+}
+
+nav div>.item{
+    flex: none;
+    width: 100px;
+}
+
+nav div>.icon{
+    flex: none;
+    display: none;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: rgb(190, 233, 199);
+}
+
+header div{
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    flex-wrap: wrap;
+    /*margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;*/
+    margin: auto;
+    padding: auto;
+    margin-top: 20px;
+}
+
+main div{
+    flex: none;
+    width: 290px;
+    /*background-color: red;*/
+    margin: 5px;
+}
+
+main div div{
+    margin: 0;
+    width: 100%;
+    background-color: rgb(190, 233, 199);
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+
+main div img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 1200px){
+    main{
+        width: 90%;
+    }
+    main div{
+        width: 45%;
+    }
+}
+
+@media (max-width: 600px){
+    main{
+        width: 90%;
+    }
+    main div{
+        width: 100%;
+    }
+    nav div>.item{
+        display: none;
+    }
+    nav div>.icon{
+        display: block;
+    }
+}
