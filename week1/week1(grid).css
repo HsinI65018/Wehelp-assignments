@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+
+.header p{
+    align-self: center;
+    font-weight: bold;
+}
+
+.header nav{
+    justify-self: end;
+}
+
+.header nav ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.header nav ul li>img{
+    display: none;
+}
+
+.header nav ul>li{
+    margin-left: 15px;
+}
+
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background-color: darksalmon;
+    margin-bottom: 15px;
+}
+
+.banner h1{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+main{
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin: auto;
+    padding: 5px;
+}
+
+main div{
+    display: grid;
+    width: 290px;
+    grid-template-rows: auto; /* 黏在一起的方法 */
+}
+
+main div img{
+    align-self: center;
+    justify-self: center;
+    max-width: 100%;
+}
+
+main div div{
+    align-self: center;
+    justify-self: center;
+    background-color: darksalmon;
+    text-align: center;
+    line-height: 40px;
+}
+
+@media(max-width: 1200px){
+    main{
+        grid-template-columns: repeat(2,1fr);
+        width: 90%;
+    }
+    main div{
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px){
+    main{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .header nav ul>.item{
+        display: none;
+    }
+    .header nav ul li>img{
+        display: block;
+    }
+}
+
+@media(max-width:400px){
+    .banner h1{
+        font-size: 30px;
+    }
+}
