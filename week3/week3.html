@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="week3.css" media="all">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <p>My Website</p>
+            <nav>
+                <ul>
+                    <li><img src="menu.png"></li>
+                </ul>
+                <ul>
+                    <li class="item">Item 1</li>
+                    <li class="item">Item 2</li>
+                    <li class="item">Item 3</li>
+                    <li class="item">Item 4</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="banner">
+            <h1>Welcome to MyHome</h1>
+        </div>
+
+        <main>
+            <!--<div><img src="pic.jpg"><div>Title 1</div></div>
+            <div><img src="pic.jpg"><div>Title 2</div></div>
+            <div><img src="pic.jpg"><div>Title 3</div></div>
+            <div><img src="pic.jpg"><div>Title 4</div></div>
+            <div><img src="pic.jpg"><div>Title 5</div></div>
+            <div><img src="pic.jpg"><div>Title 6</div></div>
+            <div><img src="pic.jpg"><div>Title 7</div></div>
+            <div><img src="pic.jpg"><div>Title 8</div></div>-->
+        </main>
+
+        <div class="btn">
+            <button>Load More</button>
+        </div>    
+
+    </div>
+
+    <script>
+        const main = document.querySelector('main');
+        const btn = document.querySelector('button');
+        let url = 'https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json';
+        fetch(url).then(response =>{
+            return response.json()
+        }).then(json =>{
+            let data = json;
+            init(data);
+        }).catch(e => {alert(e)})
+
+        // 載入所有圖片
+        function init(data){
+            data = data['result']['results']
+
+            data.forEach(data => {
+                const div = document.createElement('div');
+                const imgdiv = document.createElement('div');
+                const img = document.createElement('img');
+                const titlediv = document.createElement('div');
+                const title = document.createElement('div');
+
+                src = data.file.split(/\.jpg/i)[0] + '.jpg';
+                stitle = data.stitle;
+                img.src = src;
+                title.textContent = stitle;
+
+                imgdiv.appendChild(img);
+                imgdiv.setAttribute('class','pic');
+                div.appendChild(imgdiv);
+                titlediv.appendChild(title);
+                titlediv.setAttribute('class','title');
+                div.appendChild(titlediv)
+                main.appendChild(div);
+            });
+
+            // 除了前 8 張，剩下的都隱藏
+            for(let i = 8; i < main.children.length; i++){
+                main.children[i].setAttribute('class','hide');
+            }
+        }
+
+        // 計算 Load More click 了幾次
+        let clicks = 0;
+        function clickCount(){
+            clicks ++;
+            load(clicks*8);
+        }
+
+        // click 後顯示照片
+        function load(num){
+            let i = num;
+            while(i < num+8){
+                if (i >= main.children.length){
+                    break;
+                }else{
+                    main.children[i].removeAttribute('class','hide');
+                    i++;
+                }
+            }
+        }
+
+        btn.addEventListener('click',clickCount);
+    </script>
+</body>
+</html>
