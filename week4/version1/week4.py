@@ -4,7 +4,7 @@ from flask import Flask,redirect,render_template,url_for,request,session
 import functools
 
 app = Flask(__name__)
-app.secret_key = '123'
+app.secret_key = 'dev'
 
 def signin_required(func):
     @functools.wraps(func)
