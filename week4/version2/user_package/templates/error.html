@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <div>失敗頁面</div>
+{% endblock %}
+
+{% block content %}
+    <div>{{ error }}</div>
+    <a href="{{ url_for('user.home') }}">回到首頁</a>
+{% endblock %}
