@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    請註冊帳號密碼
+{% endblock %}
+
+{% block content_title %}
+   
+{% endblock %}
+
+{% block content %}
+    <h2>註冊系統</h2>
+    <form method="post" action="{{ url_for('register') }}">
+        <div>
+            <label for="account">帳號</label>
+            <input name="account" id="account"> 
+        </div>
+        <div>
+            <label for="password">密碼</label>
+            <input name="password" id="password">   
+        </div>
+        <div>
+            <button type="submit">登入</button>
+        </div>
+    </form>
+{% endblock %}
