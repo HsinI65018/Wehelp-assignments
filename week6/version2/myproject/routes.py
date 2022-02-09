@@ -46,16 +46,16 @@ def signin():
         password = request.form['password']
         find_account = Member.query.filter_by(account=account).first()
 
-        if find_account and check_password_hash(find_account.password, password):
+        if account == '' or password == '':
+            return redirect(url_for('error',message='請輸入帳號、密碼'))
+        elif find_account is None:   
+           return redirect(url_for('error',message='帳號、或密碼輸入錯誤' ))    
+        elif find_account and check_password_hash(find_account.password, password):
             session['user_account'] = account
             session['username'] = find_account.username
-            return redirect(url_for('user.member'))
-        elif account == '' or password == '':
-            return redirect(url_for('user.error',message='請輸入帳號、密碼'))
-        elif find_account == '' and check_password_hash(find_account.password, password):
-            return redirect(url_for('user.error',message='帳號、或密碼輸入錯誤' ))
+            return redirect(url_for('member'))
         elif  find_account and check_password_hash(find_account.password, password) is False:
-            return redirect(url_for('user.error',message='帳號、或密碼輸入錯誤' ))
+           return redirect(url_for('error',message='帳號、或密碼輸入錯誤' ))   
 
     return redirect(url_for('user.home'))
 
