@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: '微軟正黑體';
+}
+header{
+    background-color: darksalmon;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+main{
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+}
+main h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main form{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+form > div{
+    margin-top: 10px;
+}
+form div > button{
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+}
+
+main hr{
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content>section{
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+section>div{
+    margin-top: 20px;
+}
