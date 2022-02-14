@@ -30,21 +30,25 @@
             const username = document.querySelector('#username');
             const findUSer = document.querySelector('.findUser');
 
-            const response = await fetch(`/api/members?username=${username.value}`);
-            const data = await response.json();
+            try{
+                const response = await fetch(`/api/members?username=${username.value}`);
+                const data = await response.json();
 
-            if (findUSer){
-                findUSer.remove()
-                //console.log(findUSer)
-            }
-            if (data['data'] === null){
-                usernameDiv.textContent = '查無此帳號';
-            }else{
-                usernameDiv.textContent = data['data']['username'] + ' (' + data['data']['name'] + ')';
-            }
+                if (findUSer){
+                    findUSer.remove()
+                    //console.log(findUSer)
+                }
+                if (data['data'] === null){
+                    usernameDiv.textContent = '查無此帳號';
+                }else{
+                    usernameDiv.textContent = data['data']['username'] + ' (' + data['data']['name'] + ')';
+                }
 
-            usernameDiv.setAttribute('class','findUser');
-            findSection.appendChild(usernameDiv);
+                usernameDiv.setAttribute('class','findUser');
+                findSection.appendChild(usernameDiv);
+            }catch (error){
+                console.log(error);
+            }
         }
 
         const updateUsername = async () => {
@@ -52,20 +56,24 @@
             const updateDiv = document.createElement('div');
             const newUsername = document.querySelector('#newUsername');
 
-            const response = await fetch('/api/member', {
-                method: "POST",
-                body: JSON.stringify({
-                    name: newUsername.value
-                }),
-                headers: {
-                    "Content-Type" : "application/json"
-                }
-            })
-            const msg = await response.json()
+            try{
+                const response = await fetch('/api/member', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: newUsername.value
+                    }),
+                    headers: {
+                        "Content-Type" : "application/json"
+                    }
+                })
+                const msg = await response.json()
 
-            newUsername.value = '';
-            updateDiv.textContent = '更新成功';
-            updateSection.appendChild(updateDiv);
+                newUsername.value = '';
+                updateDiv.textContent = '更新成功';
+                updateSection.appendChild(updateDiv);
+            }catch(error){
+                console.log(error);
+            }
         }
     </script>
 {% endblock %}
