@@ -49,8 +49,8 @@
         }
         const updateUsername = () => {
             const updateSection = document.querySelector('.update');
-            const updateDiv = document.createElement('div');
             const newUsername = document.querySelector('#newUsername');
+            const updateDiv = document.createElement('div');
 
             fetch('/api/member', {
                 method: "POST",
