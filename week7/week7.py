@@ -68,16 +68,16 @@ def signin():
         username = request.form['username']
         password = request.form['password']
         cursor.execute("SELECT username, password FROM member WHERE username=%s", (username,))
-        find_account = cursor.fetchone()
+        find_username = cursor.fetchone()
 
         if username == '' or password == '':
             return redirect(url_for('error',message='請輸入帳號、密碼'))
-        elif find_account is None:   
+        elif find_username is None:   
            return redirect(url_for('error',message='帳號、或密碼輸入錯誤' ))    
-        elif find_account and check_password_hash(find_account['password'], password):
+        elif find_username and check_password_hash(find_username['password'], password):
             session['username'] = username
             return redirect(url_for('member'))
-        elif  find_account and check_password_hash(find_account['password'], password) is False:
+        elif  find_username and check_password_hash(find_username['password'], password) is False:
            return redirect(url_for('error',message='帳號、或密碼輸入錯誤' ))   
 
     return redirect(url_for('home'))
